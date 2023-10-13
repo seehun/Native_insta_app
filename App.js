@@ -10,6 +10,7 @@ import Status from './src/screens/Status';
 import FriendProfile from './src/screens/FriendProfile';
 import EditProfile from './src/screens/EditProfile';
 import { NavigationContainer } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -23,6 +24,22 @@ export default function App() {
           headerShown: false,
           tabBarStyle: {
             height: 70,
+          },
+          tabBarIcon: ({ focused, size, color }) => {
+            let iconName;
+            color = 'black';
+            if (route.name === 'Home') {
+              iconName = focused ? 'home-sharp' : 'home-outline';
+              // size = focused ? size + 8 : size + 2;
+            } else if (route.name === 'Search') {
+              iconName = focused ? 'search' : 'ios-search-outline';
+            } else if (route.name === 'Activity') {
+              iconName = focused ? 'ios-heart' : 'ios-heart-outline';
+            } else if (route.name === 'Profile') {
+              iconName = focused ? 'ios-person-circle' : 'ios-person-outline';
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
       >
