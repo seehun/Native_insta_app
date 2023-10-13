@@ -3,6 +3,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import Stories from '../components/Stories';
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       </View>
       <ScrollView>
         {/* stories */}
+        <Stories />
         {/* posts */}
       </ScrollView>
     </SafeAreaView>
