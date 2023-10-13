@@ -59,8 +59,8 @@ const Stories = () => {
                   <Entypo name={'circle-with-plus'} style={styles.circlePlus} />
                 </View>
               ) : null}
-              <View style={styles.imageView}>
-                <Image source={data.image} style={styles.image} />
+              <View style={styles.profileImageView}>
+                <Image source={data.image} style={styles.profileImage} />
               </View>
               <Text style={[styles.name, { opacity: data.id === 1 ? 1 : 0.5 }]}>
                 {data.name}
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     overflow: 'hidden',
   },
-  imageView: {
+  profileImageView: {
     width: 68,
     height: 68,
     backgroundColor: 'white',
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  image: {
+  profileImage: {
     width: '92%',
     height: '92%',
     resizeMode: 'cover',
