@@ -7,12 +7,17 @@ import {
   StatusBar,
   TouchableOpacity,
   Animated,
+  Platform,
 } from 'react-native';
 import React, { useEffect, useRef } from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 const Status = ({ route, navigation }) => {
   const { name, image } = route.params;
+
+  const statusBarHeight = getStatusBarHeight();
+
   const progress = useRef(new Animated.Value(0)).current;
   const progressAnimation = progress.interpolate({
     inputRange: [0, 5],
@@ -41,12 +46,22 @@ const Status = ({ route, navigation }) => {
         backgroundColor={'black'}
         barStyle={'light-content'}
       ></StatusBar>
-      <View style={styles.bar}>
+      <View
+        style={[
+          styles.bar,
+          { marginTop: Platform.OS === 'ios' ? statusBarHeight : 0 },
+        ]}
+      >
         <Animated.View
           style={[styles.barProgress, { width: progressAnimation }]}
         ></Animated.View>
       </View>
-      <View style={styles.header}>
+      <View
+        style={[
+          styles.header,
+          { marginTop: Platform.OS === 'ios' ? statusBarHeight : 0 },
+        ]}
+      >
         <View style={styles.profileImageView}>
           <Image source={image} style={styles.profileImage} />
         </View>
@@ -78,7 +93,7 @@ const styles = StyleSheet.create({
   },
   bar: {
     height: 3,
-    width: '95%',
+    width: '100%',
     backgroundColor: 'gray',
     borderWidth: 1,
     position: 'absolute',
@@ -93,7 +108,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     position: 'absolute',
-    top: 12,
+    top: 20,
     left: 0,
     width: '90%',
   },
