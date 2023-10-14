@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import Stories from '../components/Stories';
+import Posts from '../components/Posts';
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
         {/* stories */}
         <Stories />
         {/* posts */}
+        <Posts />
       </ScrollView>
     </SafeAreaView>
   );
