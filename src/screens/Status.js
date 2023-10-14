@@ -6,19 +6,46 @@ import {
   SafeAreaView,
   StatusBar,
   TouchableOpacity,
+  Animated,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
 const Status = ({ route, navigation }) => {
   const { name, image } = route.params;
+  const progress = useRef(new Animated.Value(0)).current;
+  const progressAnimation = progress.interpolate({
+    inputRange: [0, 5],
+    outputRange: ['0%', '100%'],
+  });
+
+  useEffect(() => {
+    Animated.timing(progress, {
+      toValue: 5,
+      duration: 5000,
+      useNativeDriver: false,
+    }).start();
+
+    let timer = setTimeout(() => {
+      navigation.goBack();
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
         backgroundColor={'black'}
         barStyle={'light-content'}
       ></StatusBar>
-      <View style={styles.bar}></View>
+      <View style={styles.bar}>
+        <Animated.View
+          style={[styles.barProgress, { width: progressAnimation }]}
+        ></Animated.View>
+      </View>
       <View style={styles.header}>
         <View style={styles.profileImageView}>
           <Image source={image} style={styles.profileImage} />
@@ -56,6 +83,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     position: 'absolute',
     top: 30,
+  },
+  barProgress: {
+    height: '100%',
+    backgroundColor: 'white',
   },
   header: {
     padding: 15,
