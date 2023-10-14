@@ -1,14 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
 import React from 'react';
+import SearchInput from '../components/SearchInput';
 
 const Search = () => {
   return (
-    <View>
-      <Text>Search</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* SearchInput */}
+        <SearchInput />
+        {/* SearchContent */}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 export default Search;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: Platform.OS === 'android' ? 20 : 0,
+    width: '100%',
+    backgroundColor: 'white',
+    position: 'relative',
+  },
+});
