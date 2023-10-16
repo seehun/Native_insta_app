@@ -34,7 +34,7 @@ const searchData = [
   },
 ];
 
-const SearchContent = () => {
+const SearchContent = ({ getData }) => {
   return (
     <View>
       {searchData.map((data, index) => {
@@ -47,6 +47,12 @@ const SearchContent = () => {
                     <TouchableOpacity
                       key={imgIndex}
                       style={styles.searchContentFirstContent}
+                      onPressIn={() => {
+                        getData(imgData);
+                      }}
+                      onPressOut={() => {
+                        getData(null);
+                      }}
                     >
                       <Image
                         source={imgData}
@@ -66,6 +72,12 @@ const SearchContent = () => {
                       <TouchableOpacity
                         key={imgIndex}
                         style={styles.searchContentSecondContent}
+                        onPressIn={() => {
+                          getData(imgData);
+                        }}
+                        onPressOut={() => {
+                          getData(null);
+                        }}
                       >
                         <Image
                           source={imgData}
@@ -78,6 +90,12 @@ const SearchContent = () => {
 
                 <TouchableOpacity
                   style={styles.searchContentSecondContentRight}
+                  onPressIn={() => {
+                    getData(data.images[5]);
+                  }}
+                  onPressOut={() => {
+                    getData(null);
+                  }}
                 >
                   <Image
                     source={data.images[5]}
@@ -89,7 +107,15 @@ const SearchContent = () => {
 
             {data.id === 2 ? (
               <View style={styles.searchThirdContainer}>
-                <TouchableOpacity style={styles.searchThirdContentLeft}>
+                <TouchableOpacity
+                  style={styles.searchThirdContentLeft}
+                  onPressIn={() => {
+                    getData(data.images[2]);
+                  }}
+                  onPressOut={() => {
+                    getData(null);
+                  }}
+                >
                   <Image
                     source={data.images[2]}
                     style={styles.searchThirdContentLeftImg}
@@ -101,6 +127,12 @@ const SearchContent = () => {
                       <TouchableOpacity
                         key={imgIndex}
                         style={styles.searchThirdContentRightTouch}
+                        onPressIn={() => {
+                          getData(imgData);
+                        }}
+                        onPressOut={() => {
+                          getData(null);
+                        }}
                       >
                         <Image
                           source={imgData}
