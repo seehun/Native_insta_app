@@ -9,6 +9,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import ProfileBody from '../components/ProfileBody';
 
 const FriendProfile = ({ navigation, route }) => {
   const { name, profileImage, posts, followers, following } = route.params;
@@ -28,6 +29,13 @@ const FriendProfile = ({ navigation, route }) => {
             <Feather name={'more-vertical'} style={styles.moreIcon} />
           </View>
         </View>
+        <ProfileBody
+          name={name}
+          profileImage={profileImage}
+          posts={posts}
+          followers={followers}
+          following={following}
+        />
       </View>
     </SafeAreaView>
   );
