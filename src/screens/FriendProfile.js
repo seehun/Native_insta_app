@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import ProfileBody from '../components/ProfileBody';
+import ProfileButton from '../components/ProfileButton';
 
 const FriendProfile = ({ navigation, route }) => {
   const { name, profileImage, posts, followers, following } = route.params;
@@ -36,6 +37,7 @@ const FriendProfile = ({ navigation, route }) => {
           followers={followers}
           following={following}
         />
+        <ProfileButton id={1} />
       </View>
     </SafeAreaView>
   );
