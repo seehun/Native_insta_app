@@ -12,12 +12,11 @@ const ProfileButton = ({ id, name, accountName, profileImage }) => {
         <View style={styles.container0}>
           <TouchableOpacity
             onPress={() => {
-              navigation.push('EditProfile'),
-                {
-                  name: name,
-                  accountName: accountName,
-                  profileImage: profileImage,
-                };
+              navigation.push('EditProfile', {
+                name: name,
+                accountName: accountName,
+                profileImage: profileImage,
+              });
             }}
             style={{ width: '100%' }}
           >
