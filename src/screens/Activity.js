@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? 20 : 0,
     width: '100%',
     backgroundColor: 'white',
+    paddingBottom: 40,
   },
   containerText: {
     fontSize: 20,
