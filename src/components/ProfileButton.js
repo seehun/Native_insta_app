@@ -1,13 +1,31 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
-const ProfileButton = ({ id }) => {
+const ProfileButton = ({ id, name, accountName, profileImage }) => {
+  const navigation = useNavigation();
   const [follow, setFollow] = useState(false);
   return (
     <>
       {id === 0 ? (
-        <View></View>
+        <View style={styles.container0}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.push('EditProfile'),
+                {
+                  name: name,
+                  accountName: accountName,
+                  profileImage: profileImage,
+                };
+            }}
+            style={{ width: '100%' }}
+          >
+            <View style={styles.profileEditBtn}>
+              <Text style={styles.profileEditBtnText}>프로필 편집</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       ) : (
         <View style={styles.container1}>
           <TouchableOpacity
@@ -46,6 +64,21 @@ const ProfileButton = ({ id }) => {
 export default ProfileButton;
 
 const styles = StyleSheet.create({
+  container0: { paddingHorizontal: 10, paddingVertical: 5 },
+  profileEditBtn: {
+    borderWidth: 1,
+    borderColor: '#DEDEDE',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 35,
+    borderRadius: 5,
+  },
+  profileEditBtnText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    opacity: 0.8,
+    letterSpacing: 1,
+  },
   container1: {
     width: '100%',
     flexDirection: 'row',
